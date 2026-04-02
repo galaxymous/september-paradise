@@ -181,6 +181,25 @@ footer p{font-size:.85rem;opacity:.5}
 .map-legend-sm span{font-size:.76rem;display:flex;align-items:center;gap:5px;color:var(--text-light)}
 .leg-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 
+/* PHOTO GALLERY */
+.photo-gallery{display:flex;gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;margin-bottom:24px;scroll-snap-type:x mandatory}
+.photo-gallery::-webkit-scrollbar{height:6px}
+.photo-gallery::-webkit-scrollbar-track{background:transparent}
+.photo-gallery::-webkit-scrollbar-thumb{background:var(--sand);border-radius:3px}
+.photo-card{flex:0 0 280px;scroll-snap-align:start;border-radius:12px;overflow:hidden;position:relative;height:200px;background:var(--sand);cursor:pointer}
+.photo-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.photo-card:hover img{transform:scale(1.05)}
+.photo-card .photo-caption{position:absolute;bottom:0;left:0;right:0;padding:8px 14px;background:linear-gradient(transparent,rgba(27,42,74,.7));color:var(--white);font-size:.75rem;font-weight:500}
+@media(max-width:768px){.photo-card{flex:0 0 240px;height:170px}}
+
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;cursor:pointer}
+#lightbox.show{display:flex}
+#lightbox img{max-width:92vw;max-height:88vh;border-radius:12px;object-fit:contain}
+#lightbox-caption{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--white);font-size:.9rem;font-weight:500;text-align:center;max-width:80vw}
+#lightbox-close{position:absolute;top:20px;right:24px;color:var(--white);font-size:2rem;cursor:pointer;opacity:.7;transition:opacity .2s;background:none;border:none;font-family:inherit}
+#lightbox-close:hover{opacity:1}
+
 .fade-in{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 </style>
@@ -286,6 +305,13 @@ footer p{font-size:.85rem;opacity:.5}
   </div>
 </section>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="this.classList.remove('show')">
+  <button id="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('show')">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+  <div id="lightbox-caption"></div>
+</div>
+
 <footer>
   <p class="footer-title">Bon Voyage!</p>
   <p>September 2025 &middot; Made with love</p>
@@ -318,6 +344,12 @@ airbnb:{low:60,mid:90,high:120},daily:{food:25,transport:15,activities:20},
 weather:{temp:'27-31\u00B0C',rain:'Moderate (low season)',sea:'Calm lagoons, occasional swells outside',risk:'Typhoon season — check forecasts, but Palawan is sheltered'},
 transport:'Tricycles in town, island-hopping boats (book tours), flights Manila\u2192El Nido or ferry Coron\u2192El Nido. Scooter rental ~\u20AC5/day.',
 romantic:'Private sunset boat tour through the Bacuit Archipelago — just the two of you, champagne, and limestone karsts turning gold.',
+photos:[
+{src:'https://images.unsplash.com/photo-1553649033-3fbc8d0fa3cb?w=600&h=400&fit=crop',cap:'El Nido lagoon boats'},
+{src:'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&h=400&fit=crop',cap:'Secret Lagoon, Palawan'},
+{src:'https://images.unsplash.com/photo-1537956965359-7573183d1f57?w=600&h=400&fit=crop',cap:'Island hopping paradise'},
+{src:'https://images.unsplash.com/photo-1573790387438-4da905039392?w=600&h=400&fit=crop',cap:'Nacpan Beach'}
+],
 mapCenter:[11.18,119.40],mapZoom:9,
 pins:[
 {lat:11.1784,lng:119.4150,t:'beach',n:'Nacpan Beach',d:'Twin beach, 4km of golden sand'},
@@ -354,6 +386,12 @@ airbnb:{low:50,mid:75,high:100},daily:{food:20,transport:12,activities:18},
 weather:{temp:'27-30\u00B0C',rain:'Rainy season but surf is best',sea:'Great swells for surfing, sheltered lagoons calm',risk:'Typhoon risk exists — flexible booking advised'},
 transport:'Scooter is essential (~\u20AC4/day). Habal-habal motorbike taxis. Boats to islands. Fly Manila\u2192Siargao direct.',
 romantic:'Watch sunrise from Cloud 9 boardwalk with just the surfers, then breakfast at a beachside shack together.',
+photos:[
+{src:'https://images.unsplash.com/photo-1505881502353-a1986add3762?w=600&h=400&fit=crop',cap:'Cloud 9 surf break'},
+{src:'https://images.unsplash.com/photo-1559827291-baf26d3e23a1?w=600&h=400&fit=crop',cap:'Palm tree-lined roads'},
+{src:'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=600&h=400&fit=crop',cap:'Sugba Lagoon'},
+{src:'https://images.unsplash.com/photo-1468413253725-0d5181091126?w=600&h=400&fit=crop',cap:'Island life vibes'}
+],
 mapCenter:[9.86,126.05],mapZoom:11,
 pins:[
 {lat:9.823,lng:126.116,t:'beach',n:'Cloud 9',d:'World-famous surf break + boardwalk'},
@@ -387,6 +425,12 @@ airbnb:{low:40,mid:60,high:80},daily:{food:18,transport:10,activities:12},
 weather:{temp:'27-31\u00B0C',rain:'Moderate, short bursts',sea:'Calm, great for snorkeling',risk:'Low typhoon risk \u2014 sheltered position'},
 transport:'Scooter is the way (\u20AC3-4/day). The whole island is rideable in 2 hours. Ferry from Dumaguete (1h).',
 romantic:'Swim together in Cambugahay Falls at golden hour \u2014 turquoise tiers with a rope swing, usually empty at dusk.',
+photos:[
+{src:'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&h=400&fit=crop',cap:'Cambugahay Falls'},
+{src:'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&h=400&fit=crop',cap:'Secluded white sand beach'},
+{src:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop',cap:'Crystal clear waters'},
+{src:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=400&fit=crop',cap:'Tropical sunset'}
+],
 mapCenter:[9.19,123.58],mapZoom:12,
 pins:[
 {lat:9.18,lng:123.51,t:'beach',n:'Paliton Beach',d:'Hidden white sand, sunset-facing'},
@@ -418,6 +462,12 @@ airbnb:{low:50,mid:85,high:120},daily:{food:22,transport:12,activities:18},
 weather:{temp:'26-32\u00B0C',rain:'Dry season \u2014 minimal rain',sea:'Calm, warm, perfect diving visibility',risk:'None \u2014 September is ideal'},
 transport:'Scooter on Lombok (\u20AC4/day). Fast boat to Gilis (30min, ~\u20AC10). Cidomo horse carts on Gili. No cars on Gili islands.',
 romantic:'Gili Meno at sunset \u2014 the quietest Gili, almost no one around, underwater statues to snorkel, and bioluminescent plankton at night.',
+photos:[
+{src:'https://images.unsplash.com/photo-1570789210967-2cac24ba04c0?w=600&h=400&fit=crop',cap:'Gili Islands turquoise water'},
+{src:'https://images.unsplash.com/photo-1558005137-d9619a5c539f?w=600&h=400&fit=crop',cap:'Lombok beach'},
+{src:'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&h=400&fit=crop',cap:'Rinjani volcano'},
+{src:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop',cap:'Snorkeling with turtles'}
+],
 mapCenter:[-8.55,116.15],mapZoom:9,
 pins:[
 {lat:-8.35,lng:116.04,t:'beach',n:'Gili Trawangan',d:'Liveliest Gili, snorkeling with turtles'},
@@ -454,6 +504,12 @@ airbnb:{low:40,mid:65,high:90},daily:{food:20,transport:18,activities:25},
 weather:{temp:'25-31\u00B0C',rain:'Dry season \u2014 clear skies',sea:'Excellent visibility, calm',risk:'None \u2014 perfect conditions'},
 transport:'Flights to Labuan Bajo. Boats to Komodo islands (day trips or liveaboards). Scooter in town. Shared vans across Flores.',
 romantic:'Spend a night on a private liveaboard between Komodo islands \u2014 sleep on deck under the Milky Way, just the two of you and the crew.',
+photos:[
+{src:'https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=600&h=400&fit=crop',cap:'Komodo dragon'},
+{src:'https://images.unsplash.com/photo-1604999333679-b86d54738315?w=600&h=400&fit=crop',cap:'Padar Island viewpoint'},
+{src:'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=600&h=400&fit=crop',cap:'Pink Beach shores'},
+{src:'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&h=400&fit=crop',cap:'Flores sailing'}
+],
 mapCenter:[-8.50,119.85],mapZoom:9,
 pins:[
 {lat:-8.55,lng:119.48,t:'beach',n:'Pink Beach',d:'Literally pink sand from red coral fragments'},
@@ -489,6 +545,12 @@ airbnb:{low:50,mid:80,high:110},daily:{food:20,transport:15,activities:18},
 weather:{temp:'26-30\u00B0C',rain:'Dry \u2014 barely any rain',sea:'Great visibility, strong currents at some spots',risk:'None \u2014 ideal season'},
 transport:'Fast boat from Bali (45min, ~\u20AC15). Scooter essential on-island (\u20AC5/day) \u2014 roads are steep and rough. Or hire a driver (~\u20AC25/day).',
 romantic:'Sunrise at Atuh Beach \u2014 descend the cliff stairs to a hidden cove with a natural rock arch, before anyone else arrives.',
+photos:[
+{src:'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?w=600&h=400&fit=crop',cap:'Kelingking Beach T-Rex cliff'},
+{src:'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&h=400&fit=crop',cap:'Crystal Bay snorkeling'},
+{src:'https://images.unsplash.com/photo-1588625500633-a0135a752e53?w=600&h=400&fit=crop',cap:'Broken Beach arch'},
+{src:'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=400&fit=crop',cap:'Bali temple vibes'}
+],
 mapCenter:[-8.73,115.54],mapZoom:11,
 pins:[
 {lat:-8.74,lng:115.62,t:'beach',n:'Atuh Beach',d:'Cliff-backed cove, rock arches'},
@@ -524,6 +586,12 @@ airbnb:{low:40,mid:65,high:90},daily:{food:18,transport:10,activities:15},
 weather:{temp:'26-31\u00B0C',rain:'Wet season \u2014 afternoon showers',sea:'Variable, some rough days on Con Dao',risk:'Occasional storms, flexible plans recommended'},
 transport:'Flights to Phu Quoc direct from HCMC (1h). Con Dao: flight from HCMC (45min) or Phu Quoc. Scooter on both islands.',
 romantic:'Con Dao: watch endangered sea turtles lay eggs on the beach at night (June-September season) \u2014 a profound, once-in-a-lifetime shared experience.',
+photos:[
+{src:'https://images.unsplash.com/photo-1557750255934-bed3a5e05fe5?w=600&h=400&fit=crop',cap:'Phu Quoc beach'},
+{src:'https://images.unsplash.com/photo-1528127269322-539152f5ae1b?w=600&h=400&fit=crop',cap:'Vietnam coast'},
+{src:'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&h=400&fit=crop',cap:'Night market seafood'},
+{src:'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&h=400&fit=crop',cap:'Tropical island life'}
+],
 mapCenter:[9.50,106.00],mapZoom:7,
 pins:[
 {lat:10.22,lng:103.96,t:'beach',n:'Sao Beach, Phu Quoc',d:'Powdery white sand, calm turquoise water'},
@@ -559,6 +627,12 @@ airbnb:{low:50,mid:80,high:110},daily:{food:20,transport:10,activities:15},
 weather:{temp:'27-31\u00B0C',rain:'Monsoon season \u2014 afternoon storms likely',sea:'Some rough patches, west coast gets waves',risk:'Monsoon season. Rain daily but not all-day. Lush and green.'},
 transport:'Fly to Krabi or Phuket, then longtail boat to Koh Yao Noi (30min) or ferry to Koh Lanta (2h). Scooter on both islands.',
 romantic:'Koh Yao Noi: have dinner at a tiny beachside restaurant with Phang Nga Bay\u2019s limestone karsts lit by the setting sun. Total privacy.',
+photos:[
+{src:'https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=600&h=400&fit=crop',cap:'Phang Nga Bay limestone'},
+{src:'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&h=400&fit=crop',cap:'Thai islands aerial'},
+{src:'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?w=600&h=400&fit=crop',cap:'Longtail boat sunset'},
+{src:'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&h=400&fit=crop',cap:'Golden sand beach'}
+],
 mapCenter:[8.10,98.70],mapZoom:9,
 pins:[
 {lat:8.13,lng:98.59,t:'beach',n:'Koh Yao Noi beaches',d:'Quiet, local, Phang Nga Bay views'},
@@ -593,6 +667,12 @@ airbnb:{low:35,mid:55,high:80},daily:{food:15,transport:8,activities:12},
 weather:{temp:'26-30\u00B0C',rain:'Wet season \u2014 daily rain bursts, then sun',sea:'Warm but occasionally rough for boat transfers',risk:'Rainy season. Boats may be canceled in storms. Build in flexibility.'},
 transport:'Fly to Sihanoukville (via Phnom Penh), then speed boat to the island (45min, ~\u20AC12). On island: walking only (no roads). Some water taxis between beaches.',
 romantic:'Swim in bioluminescent plankton at Saracen Bay at midnight \u2014 every stroke lights up electric blue. Pure magic.',
+photos:[
+{src:'https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=600&h=400&fit=crop',cap:'Pristine island beach'},
+{src:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=400&fit=crop',cap:'Tropical sunset'},
+{src:'https://images.unsplash.com/photo-1468413253725-0d5181091126?w=600&h=400&fit=crop',cap:'Robinson Crusoe vibes'},
+{src:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop',cap:'Crystal clear snorkeling'}
+],
 mapCenter:[10.60,103.33],mapZoom:12,
 pins:[
 {lat:10.61,lng:103.33,t:'beach',n:'Saracen Bay',d:'Main beach, powdery white sand, bioluminescence'},
@@ -754,6 +834,17 @@ eat:[
     h+='<div class="dest-header"><div class="dest-header-left"><h3>'+d.flag+' '+d.name+'</h3><p class="dest-vibe">'+d.vibe+'</p></div><div class="dest-toggle">\u25BC</div></div>';
     h+='<div class="dest-body">';
 
+    // Photo gallery
+    if(d.photos&&d.photos.length){
+      h+='<div class="photo-gallery">';
+      d.photos.forEach(function(p){
+        h+='<div class="photo-card" onclick="openLightbox(\''+p.src.replace(/w=600&h=400/,'w=1200&h=800')+'\',\''+p.cap.replace(/'/g,'\\&#39;')+'\')">';
+        h+='<img src="'+p.src+'" alt="'+p.cap+'" loading="lazy">';
+        h+='<div class="photo-caption">'+p.cap+'</div></div>';
+      });
+      h+='</div>';
+    }
+
     // Info bar
     h+='<div class="info-bar">';
     h+='<div class="info-chip">\u2708\uFE0F <strong>'+d.flightTime+'</strong> from Paris</div>';
@@ -828,6 +919,15 @@ eat:[
     setTimeout(function(){m.invalidateSize()},100);
   }
 })();
+
+// ===================== LIGHTBOX =====================
+function openLightbox(src,cap){
+  var lb=document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox-caption').textContent=cap;
+  lb.classList.add('show');
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('lightbox').classList.remove('show')});
 
 // ===================== SCROLL ANIMATIONS =====================
 var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
