@@ -200,6 +200,15 @@ footer p{font-size:.85rem;opacity:.5}
 #lightbox-close{position:absolute;top:20px;right:24px;color:var(--white);font-size:2rem;cursor:pointer;opacity:.7;transition:opacity .2s;background:none;border:none;font-family:inherit}
 #lightbox-close:hover{opacity:1}
 
+/* VISA INFO */
+.visa-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.visa-chip{display:flex;align-items:center;gap:10px;background:var(--white);border-radius:12px;padding:12px 18px;box-shadow:var(--shadow);font-size:.84rem;flex:1;min-width:200px}
+.visa-chip .visa-badge{padding:3px 10px;border-radius:10px;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.visa-free{background:rgba(91,140,90,.12);color:var(--green)}
+.visa-voa{background:rgba(224,166,78,.12);color:#B8860B}
+.visa-evisa{background:rgba(224,122,95,.1);color:var(--coral)}
+.visa-chip .visa-detail{font-size:.78rem;color:var(--text-light)}
+
 /* PROS CONS */
 .proscons{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 @media(max-width:768px){.proscons{grid-template-columns:1fr}}
@@ -263,7 +272,7 @@ footer p{font-size:.85rem;opacity:.5}
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo">September '25</div>
+    <div class="nav-logo">September '26</div>
     <div class="nav-links">
       <a href="#compare">Compare</a>
       <a href="#weather-ranking">Weather</a>
@@ -298,6 +307,20 @@ footer p{font-size:.85rem;opacity:.5}
     <h2 class="section-title">Destination Comparison</h2>
     <p class="section-desc">All 9 destinations side by side. Budget estimates for 2 weeks, 2 people, September 2026.</p>
     <div class="compare-scroll" id="compare-table-wrap"></div>
+  </div>
+</section>
+
+<!-- VISA INFO -->
+<section style="background:var(--sand-light);padding-top:0;padding-bottom:32px">
+  <div class="container">
+    <p class="section-label" style="margin-bottom:16px">Visa for Moroccan Passport</p>
+    <div class="visa-grid">
+      <div class="visa-chip"><span>&#127477;&#127469;</span><strong>Philippines</strong><span class="visa-badge visa-free">Visa-free</span><span class="visa-detail">30 days, free</span></div>
+      <div class="visa-chip"><span>&#127470;&#127465;</span><strong>Indonesia</strong><span class="visa-badge visa-voa">VOA</span><span class="visa-detail">30 days, ~&#8364;30</span></div>
+      <div class="visa-chip"><span>&#127483;&#127475;</span><strong>Vietnam</strong><span class="visa-badge visa-evisa">e-Visa</span><span class="visa-detail">90 days, &#8364;25-50</span></div>
+      <div class="visa-chip"><span>&#127481;&#127469;</span><strong>Thailand</strong><span class="visa-badge visa-free">Visa-free</span><span class="visa-detail">60 days, free</span></div>
+      <div class="visa-chip"><span>&#127472;&#127469;</span><strong>Cambodia</strong><span class="visa-badge visa-voa">VOA / e-Visa</span><span class="visa-detail">30 days, ~&#8364;30</span></div>
+    </div>
   </div>
 </section>
 
@@ -460,7 +483,7 @@ cons:['September = real typhoon risk','2 stops to get there from Paris','Limited
 flightSearch:'https://www.google.com/travel/flights?q=flights+from+CDG+to+Siargao+September+2026',
 photos:[
 {src:'https://images.unsplash.com/photo-1505881502353-a1986add3762?w=600&h=400&fit=crop',cap:'Cloud 9 surf break'},
-{src:'https://images.unsplash.com/photo-1559827291-baf26d3e23a1?w=600&h=400&fit=crop',cap:'Palm tree-lined roads'},
+{src:'https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?w=600&h=400&fit=crop',cap:'Tropical island vibes'},
 {src:'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=600&h=400&fit=crop',cap:'Sugba Lagoon'},
 {src:'https://images.unsplash.com/photo-1468413253725-0d5181091126?w=600&h=400&fit=crop',cap:'Island life vibes'}
 ],
@@ -541,9 +564,9 @@ pros:['Perfect dry-season weather in September','Huge variety: beach, volcano, d
 cons:['Gili Trawangan can get party-ish','Lombok south coast roads are rough','More developed than some alternatives','Rinjani trek needs fitness & prep'],
 flightSearch:'https://www.google.com/travel/flights?q=flights+from+CDG+to+Lombok+September+2026',
 photos:[
-{src:'https://images.unsplash.com/photo-1570789210967-2cac24ba04c0?w=600&h=400&fit=crop',cap:'Gili Islands turquoise water'},
+{src:'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=600&h=400&fit=crop',cap:'Tropical beach paradise'},
 {src:'https://images.unsplash.com/photo-1558005137-d9619a5c539f?w=600&h=400&fit=crop',cap:'Lombok beach'},
-{src:'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&h=400&fit=crop',cap:'Rinjani volcano'},
+{src:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop',cap:'Volcanic lake landscape'},
 {src:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop',cap:'Snorkeling with turtles'}
 ],
 mapCenter:[-8.55,116.15],mapZoom:9,
@@ -632,7 +655,7 @@ flightSearch:'https://www.google.com/travel/flights?q=flights+from+CDG+to+Bali+S
 photos:[
 {src:'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?w=600&h=400&fit=crop',cap:'Kelingking Beach T-Rex cliff'},
 {src:'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&h=400&fit=crop',cap:'Crystal Bay snorkeling'},
-{src:'https://images.unsplash.com/photo-1588625500633-a0135a752e53?w=600&h=400&fit=crop',cap:'Broken Beach arch'},
+{src:'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=600&h=400&fit=crop',cap:'Dramatic cliff coastline'},
 {src:'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=400&fit=crop',cap:'Bali temple vibes'}
 ],
 mapCenter:[-8.73,115.54],mapZoom:11,
@@ -674,8 +697,8 @@ pros:['Shortest flight from Paris (13-16h)','Con Dao is genuinely untouched para
 cons:['September = wet season, daily showers','Con Dao has rough sea days','Phu Quoc is getting overdeveloped','Limited nightlife & entertainment'],
 flightSearch:'https://www.google.com/travel/flights?q=flights+from+CDG+to+Phu+Quoc+September+2026',
 photos:[
-{src:'https://images.unsplash.com/photo-1557750255934-bed3a5e05fe5?w=600&h=400&fit=crop',cap:'Phu Quoc beach'},
-{src:'https://images.unsplash.com/photo-1528127269322-539152f5ae1b?w=600&h=400&fit=crop',cap:'Vietnam coast'},
+{src:'https://images.unsplash.com/photo-1468746587034-766ade47c1ac?w=600&h=400&fit=crop',cap:'Tropical beach sunset'},
+{src:'https://images.unsplash.com/photo-1586500036706-41963de24d8b?w=600&h=400&fit=crop',cap:'Southeast Asian coastline'},
 {src:'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&h=400&fit=crop',cap:'Night market seafood'},
 {src:'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&h=400&fit=crop',cap:'Tropical island life'}
 ],
