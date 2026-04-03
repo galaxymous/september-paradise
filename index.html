@@ -201,13 +201,19 @@ footer p{font-size:.85rem;opacity:.5}
 #lightbox-close:hover{opacity:1}
 
 /* VISA INFO */
-.visa-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.visa-chip{display:flex;align-items:center;gap:10px;background:var(--white);border-radius:12px;padding:12px 18px;box-shadow:var(--shadow);font-size:.84rem;flex:1;min-width:200px}
-.visa-chip .visa-badge{padding:3px 10px;border-radius:10px;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.visa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.visa-card{background:var(--white);border-radius:14px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+.visa-card-top{display:flex;align-items:center;gap:10px}
+.visa-card-top .visa-flag{font-size:1.4rem}
+.visa-card-top strong{font-size:.95rem;color:var(--navy)}
+.visa-badge{padding:4px 12px;border-radius:10px;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;display:inline-block;align-self:flex-start}
 .visa-free{background:rgba(91,140,90,.12);color:var(--green)}
 .visa-voa{background:rgba(224,166,78,.12);color:#B8860B}
 .visa-evisa{background:rgba(224,122,95,.1);color:var(--coral)}
-.visa-chip .visa-detail{font-size:.78rem;color:var(--text-light)}
+.visa-card-details{font-size:.82rem;color:var(--text-light);line-height:1.6}
+.visa-card-details span{display:block}
+@media(max-width:900px){.visa-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.visa-grid{grid-template-columns:1fr}}
 
 /* PROS CONS */
 .proscons{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
@@ -315,11 +321,51 @@ footer p{font-size:.85rem;opacity:.5}
   <div class="container">
     <p class="section-label" style="margin-bottom:16px">Visa for Moroccan Passport</p>
     <div class="visa-grid">
-      <div class="visa-chip"><span>&#127477;&#127469;</span><strong>Philippines</strong><span class="visa-badge visa-free">Visa-free</span><span class="visa-detail">30 days, free</span></div>
-      <div class="visa-chip"><span>&#127470;&#127465;</span><strong>Indonesia</strong><span class="visa-badge visa-voa">VOA</span><span class="visa-detail">30 days, ~&#8364;30</span></div>
-      <div class="visa-chip"><span>&#127483;&#127475;</span><strong>Vietnam</strong><span class="visa-badge visa-evisa">e-Visa</span><span class="visa-detail">90 days, &#8364;25-50</span></div>
-      <div class="visa-chip"><span>&#127481;&#127469;</span><strong>Thailand</strong><span class="visa-badge visa-free">Visa-free</span><span class="visa-detail">60 days, free</span></div>
-      <div class="visa-chip"><span>&#127472;&#127469;</span><strong>Cambodia</strong><span class="visa-badge visa-voa">VOA / e-Visa</span><span class="visa-detail">30 days, ~&#8364;30</span></div>
+      <div class="visa-card">
+        <div class="visa-card-top"><span class="visa-flag">&#127477;&#127469;</span><strong>Philippines</strong></div>
+        <span class="visa-badge visa-free">Visa-free</span>
+        <div class="visa-card-details">
+          <span><strong>Stay:</strong> 30 days</span>
+          <span><strong>Cost:</strong> Free</span>
+          <span>Just show your passport at immigration</span>
+        </div>
+      </div>
+      <div class="visa-card">
+        <div class="visa-card-top"><span class="visa-flag">&#127470;&#127465;</span><strong>Indonesia</strong></div>
+        <span class="visa-badge visa-voa">Visa on Arrival</span>
+        <div class="visa-card-details">
+          <span><strong>Stay:</strong> 30 days (extendable +30)</span>
+          <span><strong>Cost:</strong> ~&#8364;30 at the airport</span>
+          <span>Pay at immigration counter on arrival</span>
+        </div>
+      </div>
+      <div class="visa-card">
+        <div class="visa-card-top"><span class="visa-flag">&#127481;&#127469;</span><strong>Thailand</strong></div>
+        <span class="visa-badge visa-free">Visa-free</span>
+        <div class="visa-card-details">
+          <span><strong>Stay:</strong> 60 days</span>
+          <span><strong>Cost:</strong> Free</span>
+          <span>Visa-free since 2024 for Moroccans</span>
+        </div>
+      </div>
+      <div class="visa-card">
+        <div class="visa-card-top"><span class="visa-flag">&#127483;&#127475;</span><strong>Vietnam</strong></div>
+        <span class="visa-badge visa-evisa">e-Visa (apply before)</span>
+        <div class="visa-card-details">
+          <span><strong>Stay:</strong> up to 90 days</span>
+          <span><strong>Cost:</strong> &#8364;25&#8211;50 online</span>
+          <span>Apply online a few days before departure</span>
+        </div>
+      </div>
+      <div class="visa-card">
+        <div class="visa-card-top"><span class="visa-flag">&#127472;&#127469;</span><strong>Cambodia</strong></div>
+        <span class="visa-badge visa-voa">Visa on Arrival / e-Visa</span>
+        <div class="visa-card-details">
+          <span><strong>Stay:</strong> 30 days</span>
+          <span><strong>Cost:</strong> ~&#8364;30</span>
+          <span>Pay at airport or apply e-Visa online beforehand</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
