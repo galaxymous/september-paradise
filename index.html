@@ -862,7 +862,7 @@ eat:[
 // ===================== RENDER COMPARISON TABLE =====================
 (function(){
   var wrap=document.getElementById('compare-table-wrap');
-  var html='<table class="compare-table"><thead><tr><th>Destination</th><th>2-Week Budget</th><th>Flights RT/pp</th><th>Flight Time</th><th>Weather</th><th>Crowd</th><th>Vibe</th></tr></thead><tbody>';
+  var html='<table class="compare-table"><thead><tr><th>Destination</th><th>Total 2 Weeks (2 ppl)</th><th>Flights RT (per person)</th><th>Flight Time</th><th>Weather</th><th>Crowd</th><th>Vibe</th></tr></thead><tbody>';
   D.forEach(function(d){
     var acc=d.airbnb.mid*14;
     var fl=((d.flights.low+d.flights.high)/2)*2;
@@ -1029,7 +1029,7 @@ eat:[
     h+='<div class="info-bar">';
     h+='<div class="info-chip">\u2708\uFE0F <strong>'+d.flightTime+'</strong> from Paris</div>';
     h+='<div class="info-chip">\u{1F321}\uFE0F <strong>'+d.weather.temp+'</strong></div>';
-    h+='<div class="info-chip">\u{1F4B0} <strong>\u20AC'+Math.round(total/100)*100+'</strong> est. 2 weeks</div>';
+    h+='<div class="info-chip">\u{1F4B0} <strong>\u20AC'+Math.round(total/100)*100+'</strong> total, 2 ppl, 2 weeks</div>';
     h+='<div class="info-chip"><div class="crowd-gauge"><div class="gauge-bar"><div class="gauge-fill '+gaugeClass+'"></div></div>'+d.crowd.charAt(0).toUpperCase()+d.crowd.slice(1)+'</div></div>';
     h+='</div>';
 
@@ -1059,7 +1059,7 @@ eat:[
     // Budget table
     h+='<p class="dest-sub">2-Week Budget Estimate (2 people)</p>';
     h+='<table class="budget-table"><thead><tr><th>Category</th><th>Estimate</th><th>Details</th></tr></thead><tbody>';
-    h+='<tr><td>\u2708\uFE0F Flights (2 ppl RT)</td><td>\u20AC'+fl+'</td><td>'+d.flights.airlines+', '+d.flights.stops+'</td></tr>';
+    h+='<tr><td>\u2708\uFE0F Flights (2 ppl round trip)</td><td>\u20AC'+fl+'</td><td>\u20AC'+d.flights.low+'\u2013'+d.flights.high+' per person \u00D7 2 \u2014 '+d.flights.stops+'</td></tr>';
     h+='<tr><td>\u{1F3E0} Accommodation (14 nights)</td><td>\u20AC'+acc+'</td><td>\u20AC'+d.airbnb.low+'/'+d.airbnb.mid+'/'+d.airbnb.high+' (low/mid/high per night)</td></tr>';
     h+='<tr><td>\u{1F37D}\uFE0F Food (14 days, 2 ppl)</td><td>\u20AC'+(d.daily.food*14*2)+'</td><td>~\u20AC'+d.daily.food+'/person/day</td></tr>';
     h+='<tr><td>\u{1F6F5} Transport (14 days)</td><td>\u20AC'+(d.daily.transport*14*2)+'</td><td>~\u20AC'+d.daily.transport+'/person/day</td></tr>';
@@ -1162,8 +1162,8 @@ eat:[
       var crowdLabel=d.crowd.charAt(0).toUpperCase()+d.crowd.slice(1);
       var weatherLabel=d.weather.score>=8?'\u2705 Dry & ideal':d.weather.score>=6?'\u{1F7E1} Mostly OK':'\u{1F7E0} Wet / risky';
       html+='<div class="picker-col"><h4>'+d.flag+' '+d.name+'</h4><table>';
-      html+='<tr><td>Total 2 weeks</td><td>\u20AC'+total+'</td></tr>';
-      html+='<tr><td>Flights RT/pp</td><td>\u20AC'+d.flights.low+'\u2013'+d.flights.high+'</td></tr>';
+      html+='<tr><td>Total 2 wks (2 ppl)</td><td>\u20AC'+total+'</td></tr>';
+      html+='<tr><td>Flights RT/person</td><td>\u20AC'+d.flights.low+'\u2013'+d.flights.high+'</td></tr>';
       html+='<tr><td>Flight time</td><td>'+d.flightTime+'</td></tr>';
       html+='<tr><td>Accommodation</td><td>\u20AC'+d.airbnb.low+'\u2013'+d.airbnb.high+'/night</td></tr>';
       html+='<tr><td>September weather</td><td>'+weatherLabel+'</td></tr>';
