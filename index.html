@@ -896,33 +896,37 @@ eat:[
   function showResult(){
     var scores={};
     D.forEach(function(d){scores[d.id]=0});
-    // Budget scoring
+    // Budget scoring (max 3 pts)
     D.forEach(function(d){
       var acc=d.airbnb.mid*14;var fl=((d.flights.low+d.flights.high)/2)*2;var dai=(d.daily.food+d.daily.transport+d.daily.activities)*14*2;var total=acc+fl+dai;
-      if(answers.budget==='smart'){if(total<3000)scores[d.id]+=3;else if(total<3500)scores[d.id]+=2;else scores[d.id]+=1}
-      else if(answers.budget==='balanced'){if(total>2500&&total<4000)scores[d.id]+=3;else scores[d.id]+=1}
+      if(answers.budget==='smart'){if(total<3500)scores[d.id]+=3;else if(total<4200)scores[d.id]+=2;else scores[d.id]+=1}
+      else if(answers.budget==='balanced'){if(total>=3000&&total<=4500)scores[d.id]+=3;else scores[d.id]+=1}
       else{scores[d.id]+=2}// splurge: all fine
     });
-    // Activity scoring
-    var adventureDests=['flores','siargao','lombok'];
-    var beachDests=['siquijor','nusapenida','cambodia','thailand'];
+    // Activity scoring (max 4 pts — most important)
+    var adventureDests=['flores','siargao','lombok','elnido'];
+    var beachDests=['siquijor','nusapenida','cambodia','thailand','vietnam'];
+    var mixDests=['elnido','lombok','nusapenida','flores'];
     D.forEach(function(d){
-      if(answers.activity==='adventure'&&adventureDests.indexOf(d.id)>=0)scores[d.id]+=3;
-      else if(answers.activity==='beach'&&beachDests.indexOf(d.id)>=0)scores[d.id]+=3;
+      if(answers.activity==='adventure'&&adventureDests.indexOf(d.id)>=0)scores[d.id]+=4;
+      else if(answers.activity==='beach'&&beachDests.indexOf(d.id)>=0)scores[d.id]+=4;
+      else if(answers.activity==='mix'&&mixDests.indexOf(d.id)>=0)scores[d.id]+=4;
       else if(answers.activity==='mix')scores[d.id]+=2;
       else scores[d.id]+=1;
     });
-    // Crowd scoring
+    // Crowd scoring (max 4 pts — strong weight to match preference)
     D.forEach(function(d){
-      if(answers.crowd==='secluded'&&d.crowd==='quiet')scores[d.id]+=3;
-      else if(answers.crowd==='some'&&d.crowd==='balanced')scores[d.id]+=3;
-      else if(answers.crowd==='some'&&d.crowd==='quiet')scores[d.id]+=2;
-      else if(answers.crowd==='fine')scores[d.id]+=2;
+      if(answers.crowd==='secluded'&&d.crowd==='quiet')scores[d.id]+=4;
+      else if(answers.crowd==='secluded'&&d.crowd==='balanced')scores[d.id]+=1;
+      else if(answers.crowd==='some'&&d.crowd==='balanced')scores[d.id]+=4;
+      else if(answers.crowd==='some'&&d.crowd==='quiet')scores[d.id]+=1;
+      else if(answers.crowd==='fine'&&d.crowd==='balanced')scores[d.id]+=3;
+      else if(answers.crowd==='fine'&&d.crowd==='quiet')scores[d.id]+=2;
       else scores[d.id]+=1;
     });
-    // Weather bonus for dry season
+    // Weather bonus for dry season (max 2 pts)
     var drySeason=['lombok','flores','nusapenida'];
-    drySeason.forEach(function(id){scores[id]+=1});
+    drySeason.forEach(function(id){scores[id]+=2});
 
     var best=null,bestScore=0;
     Object.keys(scores).forEach(function(id){if(scores[id]>bestScore){bestScore=scores[id];best=id}});
