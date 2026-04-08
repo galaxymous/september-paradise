@@ -82,18 +82,30 @@ td .dest-flag{margin-right:6px}
 #quiz .section-label{color:var(--coral-light)}
 #quiz .section-title{color:var(--sand)}
 #quiz .section-desc{color:rgba(245,230,208,.6)}
-.quiz-q{margin-bottom:32px}
-.quiz-q h4{color:var(--sand);font-size:1rem;margin-bottom:14px;font-weight:500}
-.quiz-opts{display:flex;gap:10px;flex-wrap:wrap}
-.quiz-opt{padding:10px 22px;border-radius:24px;border:1.5px solid rgba(245,230,208,.2);background:rgba(255,255,255,.04);color:rgba(245,230,208,.7);font-size:.85rem;cursor:pointer;transition:all .25s;font-weight:500;user-select:none}
-.quiz-opt:hover{border-color:var(--coral);color:var(--sand)}
-.quiz-opt.selected{background:var(--coral);border-color:var(--coral);color:var(--white)}
-#quiz-result{margin-top:32px;padding:28px;border-radius:var(--radius);background:rgba(245,230,208,.08);border:1px solid rgba(245,230,208,.1);display:none}
-#quiz-result.show{display:block}
-#quiz-result h3{font-family:'Playfair Display',serif;color:var(--sand);font-size:1.4rem;margin-bottom:8px}
-#quiz-result p{color:rgba(245,230,208,.7);font-size:.92rem;line-height:1.6}
-#quiz-go-btn{margin-top:16px;padding:10px 24px;border-radius:24px;border:none;background:var(--coral);color:var(--white);font-weight:600;cursor:pointer;font-size:.88rem;transition:background .2s}
-#quiz-go-btn:hover{background:#c96a50}
+
+/* MATCHMAKER SLIDERS */
+#matchmaker{max-width:680px}
+.mm-sliders{display:flex;flex-direction:column;gap:32px;margin-bottom:40px}
+.mm-slider-row{display:flex;flex-direction:column;gap:8px}
+.mm-slider-labels{display:flex;justify-content:space-between;align-items:center}
+.mm-slider-labels span:first-child{color:var(--sand);font-size:1rem;font-weight:500}
+.mm-slider-labels span:last-child{color:var(--coral);font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;min-width:90px;text-align:right}
+.mm-range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:rgba(245,230,208,.15);outline:none;cursor:pointer}
+.mm-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--coral);cursor:pointer;box-shadow:0 2px 8px rgba(224,122,95,.4);transition:transform .15s}
+.mm-range::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.mm-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--coral);cursor:pointer;border:none;box-shadow:0 2px 8px rgba(224,122,95,.4)}
+.mm-slider-ends{display:flex;justify-content:space-between;color:rgba(245,230,208,.4);font-size:.72rem}
+#mm-result{display:flex;flex-direction:column;gap:12px}
+.mm-pick-card{background:rgba(245,230,208,.08);border:1px solid rgba(245,230,208,.12);border-radius:var(--radius);padding:20px 24px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .25s}
+.mm-pick-card:hover{background:rgba(245,230,208,.13);border-color:rgba(245,230,208,.25)}
+.mm-pick-card.top-pick{background:rgba(224,122,95,.12);border-color:rgba(224,122,95,.35);border-width:2px}
+.mm-rank{font-size:1.3rem;min-width:28px;text-align:center}
+.mm-pick-info{flex:1}
+.mm-pick-name{color:var(--sand);font-weight:600;font-size:1rem;margin-bottom:3px}
+.mm-pick-stats{color:rgba(245,230,208,.5);font-size:.78rem;display:flex;gap:12px;flex-wrap:wrap}
+.mm-pick-stats span{display:flex;align-items:center;gap:4px}
+.mm-score-bar{width:80px;height:6px;border-radius:3px;background:rgba(245,230,208,.1);overflow:hidden;margin-left:auto;flex-shrink:0}
+.mm-score-fill{height:100%;border-radius:3px;background:var(--coral);transition:width .4s ease}
 
 /* DESTINATION TABS */
 #destinations{background:var(--sand-light)}
@@ -163,9 +175,7 @@ footer p{font-size:.85rem;opacity:.5}
   .dest-body{padding:0 20px 20px}
   .dest-grid{grid-template-columns:1fr}
   .dest-map{height:260px}
-  .quiz-opts{flex-direction:column}
-  .quiz-opt{text-align:center}
-  .region-tabs{gap:6px}
+.region-tabs{gap:6px}
   .region-tab{padding:10px 16px;font-size:.82rem}
 }
 
@@ -283,7 +293,7 @@ footer p{font-size:.85rem;opacity:.5}
       <a href="#compare">Compare</a>
       <a href="#weather-ranking">Weather</a>
       <a href="#picker-section">Side by Side</a>
-      <a href="#quiz">Quiz</a>
+      <a href="#quiz">Matchmaker</a>
       <a href="#destinations">Destinations</a>
     </div>
   </div>
@@ -296,11 +306,8 @@ footer p{font-size:.85rem;opacity:.5}
     <h1>Two Weeks in<br><em>Paradise</em></h1>
     <p class="hero-sub">A private comparison guide for our September escape. Beaches, jungles, sunsets, and each other.</p>
     <div class="hero-tags">
-      <span>Philippines</span>
       <span>Indonesia</span>
-      <span>Vietnam</span>
-      <span>Thailand</span>
-      <span>Cambodia</span>
+      <span>Philippines</span>
       <span>Madeira</span>
       <span>Azores</span>
       <span>Mauritius</span>
@@ -315,7 +322,7 @@ footer p{font-size:.85rem;opacity:.5}
   <div class="container">
     <p class="section-label">At a Glance</p>
     <h2 class="section-title">Destination Comparison</h2>
-    <p class="section-desc">All 13 destinations side by side. Budget estimates for 2 weeks, 2 people, September 2026.</p>
+    <p class="section-desc">8 destinations, all with good September weather. Budget estimates for 2 weeks, 2 people.</p>
     <div class="compare-scroll" id="compare-table-wrap"></div>
   </div>
 </section>
@@ -397,7 +404,7 @@ footer p{font-size:.85rem;opacity:.5}
   <div class="container">
     <p class="section-label">September Reality Check</p>
     <h2 class="section-title">Weather Ranking</h2>
-    <p class="section-desc">September means dry season in Indonesia but monsoon season in parts of SE Asia. This matters.</p>
+    <p class="section-desc">We already cut 5 destinations where September means typhoon or monsoon season (Siargao, El Nido, Vietnam, Thailand, Cambodia). Every destination below has good-to-perfect September weather.</p>
     <div id="weather-rank"></div>
   </div>
 </section>
@@ -413,40 +420,31 @@ footer p{font-size:.85rem;opacity:.5}
   </div>
 </section>
 
-<!-- QUIZ -->
+<!-- MATCHMAKER -->
 <section id="quiz">
   <div class="container">
-    <p class="section-label">Not sure?</p>
-    <h2 class="section-title">Help Us Decide</h2>
-    <p class="section-desc">Answer 3 quick questions and we'll highlight the best match.</p>
-    <div class="quiz-q">
-      <h4>1. Budget priority</h4>
-      <div class="quiz-opts" data-q="budget">
-        <div class="quiz-opt" data-v="smart">Smart spending</div>
-        <div class="quiz-opt" data-v="balanced">Balanced comfort</div>
-        <div class="quiz-opt" data-v="splurge">Worth the splurge</div>
+    <p class="section-label">Find Your Match</p>
+    <h2 class="section-title">The Matchmaker</h2>
+    <p class="section-desc">Drag the sliders — your ranking updates instantly.</p>
+    <div id="matchmaker">
+      <div class="mm-sliders">
+        <div class="mm-slider-row">
+          <div class="mm-slider-labels"><span>💶 Budget</span><span id="mm-budget-lbl">Balanced</span></div>
+          <input type="range" id="mm-budget" min="0" max="100" value="50" class="mm-range">
+          <div class="mm-slider-ends"><span>Budget-friendly</span><span>Luxury welcome</span></div>
+        </div>
+        <div class="mm-slider-row">
+          <div class="mm-slider-labels"><span>🌊 Vibe</span><span id="mm-vibe-lbl">Mix</span></div>
+          <input type="range" id="mm-vibe" min="0" max="100" value="50" class="mm-range">
+          <div class="mm-slider-ends"><span>Pure beach & relax</span><span>Explore & adventure</span></div>
+        </div>
+        <div class="mm-slider-row">
+          <div class="mm-slider-labels"><span>✈️ Distance</span><span id="mm-dist-lbl">Either</span></div>
+          <input type="range" id="mm-dist" min="0" max="100" value="50" class="mm-range">
+          <div class="mm-slider-ends"><span>Close to Paris</span><span>Happy to fly far</span></div>
+        </div>
       </div>
-    </div>
-    <div class="quiz-q">
-      <h4>2. Activity preference</h4>
-      <div class="quiz-opts" data-q="activity">
-        <div class="quiz-opt" data-v="beach">Beach & chill</div>
-        <div class="quiz-opt" data-v="adventure">Adventure & explore</div>
-        <div class="quiz-opt" data-v="mix">Mix of both</div>
-      </div>
-    </div>
-    <div class="quiz-q">
-      <h4>3. Crowd tolerance</h4>
-      <div class="quiz-opts" data-q="crowd">
-        <div class="quiz-opt" data-v="secluded">Total seclusion</div>
-        <div class="quiz-opt" data-v="some">Some life around</div>
-        <div class="quiz-opt" data-v="fine">Don't mind crowds</div>
-      </div>
-    </div>
-    <div id="quiz-result">
-      <h3 id="quiz-match"></h3>
-      <p id="quiz-why"></p>
-      <button id="quiz-go-btn">See full details below</button>
+      <div id="mm-result"></div>
     </div>
   </div>
 </section>
@@ -493,95 +491,8 @@ footer p{font-size:.85rem;opacity:.5}
 
 // ===================== DESTINATION DATA =====================
 var D=[
-{id:'elnido',name:'El Nido & Coron, Palawan',flag:'\u{1F1F5}\u{1F1ED}',region:'philippines',regionLabel:'Philippines',
-vibe:'Dramatic limestone cliffs rising from emerald lagoons. El Nido is the classic island-hopping paradise; Coron has world-class wreck diving and hidden lakes. Remote enough to feel like an adventure, popular enough to have great food and lodging.',
-crowd:'balanced',vibeTag:'Island hopping',flightTime:'18-22h',
-flights:{low:800,high:1100,airlines:'Philippine Airlines, Cebu Pacific via Manila (+ domestic to El Nido)',stops:'1-2 stops'},
-airbnb:{low:60,mid:90,high:120},daily:{food:25,transport:15,activities:20},
-weather:{temp:'27-31\u00B0C',rain:'Moderate (low season)',sea:'Calm lagoons, occasional swells outside',risk:'Typhoon season \u2014 check forecasts, but Palawan is sheltered',score:6},
-transport:'Tricycles in town, island-hopping boats (book tours), flights Manila\u2192El Nido or ferry Coron\u2192El Nido. Scooter rental ~\u20AC5/day.',
-romantic:'Private sunset boat tour through the Bacuit Archipelago \u2014 just the two of you, champagne, and limestone karsts turning gold.',
-pros:['Jaw-dropping lagoons & limestone scenery','Excellent island hopping infrastructure','Good food scene for a remote area','Romantic private boat tours'],
-cons:['Typhoon risk in September','Long travel time (18-22h)','El Nido can feel crowded at peak spots','Flights to Palawan add cost & time'],
-flightSearch:'https://www.google.com/travel/flights?q=flights+from+CDG+to+El+Nido+Palawan+September+2026',
-photos:[
-{src:'https://images.unsplash.com/photo-1553649033-3fbc8d0fa3cb?w=600&h=400&fit=crop',cap:'El Nido lagoon boats'},
-{src:'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&h=400&fit=crop',cap:'Secret Lagoon, Palawan'},
-{src:'https://images.unsplash.com/photo-1537956965359-7573183d1f57?w=600&h=400&fit=crop',cap:'Island hopping paradise'},
-{src:'https://images.unsplash.com/photo-1573790387438-4da905039392?w=600&h=400&fit=crop',cap:'Nacpan Beach'}
-],
-mapCenter:[11.18,119.40],mapZoom:9,
-pins:[
-{lat:11.1784,lng:119.4150,t:'beach',n:'Nacpan Beach',d:'Twin beach, 4km of golden sand'},
-{lat:11.19,lng:119.38,t:'activity',n:'Big Lagoon',d:'Iconic turquoise lagoon tour A'},
-{lat:11.20,lng:119.36,t:'activity',n:'Small Lagoon',d:'Kayak through limestone entrance'},
-{lat:11.99,lng:120.20,t:'activity',n:'Kayangan Lake',d:'Crystal-clear lake in Coron, postcard-perfect'},
-{lat:11.17,lng:119.42,t:'food',n:'Trattoria Altrove',d:'Italian-Filipino fusion, romantic terrace'},
-{lat:11.18,lng:119.41,t:'food',n:'Happiness Beach Bar',d:'Beachfront seafood, sunset views'},
-{lat:11.998,lng:120.21,t:'food',n:'Balinsasayaw Coron',d:'Floating restaurant, local dishes'},
-{lat:11.175,lng:119.415,t:'stay',n:'Nacpan Beach Glamping',d:'Beachfront tents, \u20AC80-120/night'}
-],
-todo:[
-{n:'Island Hopping Tour A',d:'Big Lagoon, Small Lagoon, Shimizu Island, Secret Lagoon. The classic.'},
-{n:'Nacpan Beach day',d:'4km of golden sand, swing bars, perfect for a full lazy day.'},
-{n:'Kayangan Lake, Coron',d:'Hike up for the famous viewpoint, swim in impossibly clear water.'},
-{n:'Twin Lagoon snorkeling',d:'Swim through a rock gap between hot and cold lagoons.'},
-{n:'El Nido sunset at Las Cabanas',d:'Zipline over the beach or just watch the sky explode with color.'},
-{n:'Barracuda Lake diving',d:'Thermocline diving in a volcanic crater lake — surreal experience.'},
-{n:'Rent a scooter to Lio Beach',d:'Quieter beach north of El Nido with boutique resorts and calm water.'},
-{n:'Night snorkeling in Coron',d:'See bioluminescent plankton and sleeping sea turtles.'}
-],
-eat:[
-{n:'Trattoria Altrove',d:'Wood-fired pizza with a Filipino twist. Romantic rooftop.'},
-{n:'Happiness Beach Bar',d:'Feet-in-the-sand seafood dinner at sunset.'},
-{n:'Alternative El Nido',d:'Veggie-forward cafe, great smoothie bowls and vegan options.'},
-{n:'Balinsasayaw (Coron)',d:'Floating restaurant with local seafood and views of the bay.'}
-]},
-
-{id:'siargao',name:'Siargao',flag:'\u{1F1F5}\u{1F1ED}',region:'philippines',regionLabel:'Philippines',
-vibe:'The Philippines\u2019 cool-kid island. Famous for Cloud 9 surf break, palm-lined roads, and a laid-back boho scene. Think surf, motorbikes, coconut trees, and island hopping to tiny uninhabited atolls. September brings solid swells.',
-crowd:'quiet',vibeTag:'Surf & chill',flightTime:'19-24h',
-flights:{low:850,high:1150,airlines:'Cebu Pacific, Philippine Airlines via Manila + Siargao',stops:'2 stops'},
-airbnb:{low:50,mid:75,high:100},daily:{food:20,transport:12,activities:18},
-weather:{temp:'27-30\u00B0C',rain:'Rainy season but surf is best',sea:'Great swells for surfing, sheltered lagoons calm',risk:'Typhoon risk exists \u2014 flexible booking advised',score:4},
-transport:'Scooter is essential (~\u20AC4/day). Habal-habal motorbike taxis. Boats to islands. Fly Manila\u2192Siargao direct.',
-romantic:'Watch sunrise from Cloud 9 boardwalk with just the surfers, then breakfast at a beachside shack together.',
-pros:['Incredible surf & boho culture','Very affordable','Cool laid-back crowd, great for couples','Amazing island-hopping (Naked, Daku, Guyam)'],
-cons:['September = real typhoon risk','2 stops to get there from Paris','Limited upscale dining','Infrastructure still basic'],
-flightSearch:'https://www.google.com/travel/flights?q=flights+from+CDG+to+Siargao+September+2026',
-photos:[
-{src:'https://images.unsplash.com/photo-1505881502353-a1986add3762?w=600&h=400&fit=crop',cap:'Cloud 9 surf break'},
-{src:'https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?w=600&h=400&fit=crop',cap:'Tropical island vibes'},
-{src:'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=600&h=400&fit=crop',cap:'Sugba Lagoon'},
-{src:'https://images.unsplash.com/photo-1468413253725-0d5181091126?w=600&h=400&fit=crop',cap:'Island life vibes'}
-],
-mapCenter:[9.86,126.05],mapZoom:11,
-pins:[
-{lat:9.823,lng:126.116,t:'beach',n:'Cloud 9',d:'World-famous surf break + boardwalk'},
-{lat:9.93,lng:126.03,t:'beach',n:'Naked Island',d:'Tiny sandbar, nothing but sand and sea'},
-{lat:9.95,lng:126.08,t:'beach',n:'Daku Island',d:'Palm trees, white sand, picnic vibes'},
-{lat:9.87,lng:126.08,t:'activity',n:'Sugba Lagoon',d:'Crystal lagoon for paddleboarding'},
-{lat:9.86,lng:126.05,t:'food',n:'Shaka Siargao',d:'Smoothie bowls, coffee, surf crowd'},
-{lat:9.85,lng:126.06,t:'food',n:'Kermit Siargao',d:'Best pizza on the island, lively vibe'},
-{lat:9.84,lng:126.11,t:'stay',n:'Beachfront bungalows',d:'General Luna area, \u20AC50-90/night'}
-],
-todo:[
-{n:'Surf lesson at Cloud 9',d:'Even beginners can try the reef break with an instructor. Iconic.'},
-{n:'Island hopping: Naked, Daku, Guyam',d:'Three tiny islands in one day — sandbar, palms, snorkeling.'},
-{n:'Sugba Lagoon paddleboarding',d:'Emerald lagoon surrounded by mangroves, incredibly peaceful.'},
-{n:'Magpupungko tidal pools',d:'Natural rock pools revealed at low tide — surreal swimming.'},
-{n:'Scooter the palm-tree road',d:'The famous coconut palm road — pure Instagram but genuinely beautiful.'},
-{n:'Sohoton Cove & jellyfish sanctuary',d:'Non-stinging jellyfish lake + cave swimming. Unique.'}
-],
-eat:[
-{n:'Kermit Siargao',d:'Italian-owned, incredible thin-crust pizza, lively open-air spot.'},
-{n:'Shaka Siargao',d:'Surf-crowd favorite: acai bowls, coffee, healthy breakfast.'},
-{n:'Mama\u2019s Grill',d:'Local BBQ joint. Grilled fish, chicken, and pork skewers. Cheap and delicious.'},
-{n:'Bravo',d:'Romantic dinner spot: Mediterranean fusion with ocean views.'}
-]},
-
-{id:'siquijor',name:'Siquijor',flag:'\u{1F1F5}\u{1F1ED}',region:'philippines',regionLabel:'Philippines',
-vibe:'The \u201Cmystical island\u201D \u2014 known for folk healing and sorcery legends. In reality: pristine white beaches, spectacular waterfalls, almost no tourists, and an otherworldly calm. The most off-the-beaten-path option in the Philippines shortlist.',
+{id:'siquijor',name:'Siquijor',flag:'\u{1F1F5}\u{1F1ED}',region:'indonesia',regionLabel:'Philippines',
+vibe:'The \u201Cmystical island\u201D \u2014 known for folk healing and sorcery legends. In reality: pristine white beaches, spectacular waterfalls, almost no tourists, and an otherworldly calm. The most off-the-beaten-path Philippines island \u2014 low typhoon risk, calm seas.',
 crowd:'quiet',vibeTag:'Mystical & serene',flightTime:'20-25h',
 flights:{low:800,high:1100,airlines:'Via Manila/Cebu + ferry from Dumaguete',stops:'1-2 + ferry'},
 airbnb:{low:40,mid:60,high:80},daily:{food:18,transport:10,activities:12},
@@ -751,133 +662,6 @@ eat:[
 {n:'Amok Sunset',d:'Cliffside restaurant with incredible sunset panorama.'},
 {n:'Local warungs in Toyapakeh',d:'Nasi campur and mie goreng for under \u20AC2. Authentic.'},
 {n:'The Mangku',d:'Healthy bowls, good coffee, nice vibe near Crystal Bay.'}
-]},
-
-{id:'vietnam',name:'Phu Quoc & Con Dao',flag:'\u{1F1FB}\u{1F1F3}',region:'other',regionLabel:'Other Asia',
-vibe:'Vietnam\u2019s island gems. Phu Quoc is the larger, more developed option with night markets and pepper farms. Con Dao is the real prize: a remote national park island with pristine beaches, sea turtles nesting, and almost no tourists. September is fringe wet season \u2014 some rain but lush and empty.',
-crowd:'quiet',vibeTag:'Unspoiled nature',flightTime:'13-16h',
-flights:{low:700,high:950,airlines:'Vietnam Airlines (direct to HCM), Qatar, Turkish',stops:'1 stop (+ domestic to Phu Quoc/Con Dao)'},
-airbnb:{low:40,mid:65,high:90},daily:{food:18,transport:10,activities:15},
-weather:{temp:'26-31\u00B0C',rain:'Wet season \u2014 afternoon showers',sea:'Variable, some rough days on Con Dao',risk:'Occasional storms, flexible plans recommended',score:5},
-transport:'Flights to Phu Quoc direct from HCMC (1h). Con Dao: flight from HCMC (45min) or Phu Quoc. Scooter on both islands.',
-romantic:'Con Dao: watch endangered sea turtles lay eggs on the beach at night (June-September season) \u2014 a profound, once-in-a-lifetime shared experience.',
-pros:['Shortest flight from Paris (13-16h)','Con Dao is genuinely untouched paradise','Incredible food (Vietnam!)','Turtle nesting season in September'],
-cons:['September = wet season, daily showers','Con Dao has rough sea days','Phu Quoc is getting overdeveloped','Limited nightlife & entertainment'],
-flightSearch:'https://www.google.com/travel/flights?q=flights+from+CDG+to+Phu+Quoc+September+2026',
-photos:[
-{src:'https://images.unsplash.com/photo-1468746587034-766ade47c1ac?w=600&h=400&fit=crop',cap:'Tropical beach sunset'},
-{src:'https://images.unsplash.com/photo-1586500036706-41963de24d8b?w=600&h=400&fit=crop',cap:'Southeast Asian coastline'},
-{src:'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&h=400&fit=crop',cap:'Night market seafood'},
-{src:'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&h=400&fit=crop',cap:'Tropical island life'}
-],
-mapCenter:[9.50,106.00],mapZoom:7,
-pins:[
-{lat:10.22,lng:103.96,t:'beach',n:'Sao Beach, Phu Quoc',d:'Powdery white sand, calm turquoise water'},
-{lat:10.00,lng:104.02,t:'activity',n:'An Thoi Islands',d:'Snorkeling + island hopping archipelago'},
-{lat:10.20,lng:104.00,t:'food',n:'Phu Quoc Night Market',d:'Seafood galore, local prices'},
-{lat:8.69,lng:106.60,t:'beach',n:'Dam Trau Beach, Con Dao',d:'Pristine, empty, airport beach'},
-{lat:8.68,lng:106.58,t:'activity',n:'Con Dao National Park',d:'Hiking, wildlife, turtle nesting'},
-{lat:8.71,lng:106.61,t:'food',n:'Infiniti Cafe Con Dao',d:'Best coffee and views on the island'},
-{lat:10.21,lng:103.97,t:'stay',n:'Phu Quoc beach bungalows',d:'\u20AC40-80/night'}
-],
-todo:[
-{n:'Sao Beach day (Phu Quoc)',d:'The postcard beach. White powder sand, swing sets, seafood shacks.'},
-{n:'An Thoi island hopping',d:'Boat trip through 15 small islands. Snorkel, swim, eat on board.'},
-{n:'Phu Quoc Night Market',d:'Huge variety of grilled seafood. Try the sea urchin.'},
-{n:'Con Dao National Park hike',d:'Jungle trails, wildlife, historical sites.'},
-{n:'Turtle watching (Con Dao)',d:'Night tours to see endangered turtles nesting on beaches. Unforgettable.'},
-{n:'Pepper farm visit (Phu Quoc)',d:'Phu Quoc is famous for pepper. Tour a farm and taste fresh peppercorns.'},
-{n:'Snorkeling at Hon Xuong',d:'One of the clearest waters in Vietnam.'},
-{n:'Dam Trau Beach (Con Dao)',d:'Planes land over your head on this pristine empty beach.'}
-],
-eat:[
-{n:'Phu Quoc Night Market',d:'Fresh grilled seafood priced by weight. Incredible value.'},
-{n:'Crab House (Phu Quoc)',d:'Giant mud crabs, garlic butter. Messy and glorious.'},
-{n:'Infiniti Cafe (Con Dao)',d:'Chill cafe, great Vietnamese coffee, light bites.'},
-{n:'Bar 200 (Con Dao)',d:'Oceanfront dinner, fresh catch of the day. Romantic setting.'}
-]},
-
-{id:'thailand',name:'Koh Yao Noi & Koh Lanta',flag:'\u{1F1F9}\u{1F1ED}',region:'other',regionLabel:'Other Asia',
-vibe:'Thailand\u2019s calm side. Koh Yao Noi is a tiny Muslim fishing island between Phuket and Krabi \u2014 almost untouched, with Phang Nga Bay views. Koh Lanta is longer and more settled, with a bohemian expat community and endless beaches. September is low season: rain possible but amazing deals and no crowds.',
-crowd:'quiet',vibeTag:'Local & calm',flightTime:'12-15h',
-flights:{low:650,high:900,airlines:'Thai Airways, Qatar, Emirates via BKK + domestic',stops:'1 stop + domestic/boat'},
-airbnb:{low:50,mid:80,high:110},daily:{food:20,transport:10,activities:15},
-weather:{temp:'27-31\u00B0C',rain:'Monsoon season \u2014 afternoon storms likely',sea:'Some rough patches, west coast gets waves',risk:'Monsoon season. Rain daily but not all-day. Lush and green.',score:4},
-transport:'Fly to Krabi or Phuket, then longtail boat to Koh Yao Noi (30min) or ferry to Koh Lanta (2h). Scooter on both islands.',
-romantic:'Koh Yao Noi: have dinner at a tiny beachside restaurant with Phang Nga Bay\u2019s limestone karsts lit by the setting sun. Total privacy.',
-pros:['Cheapest flights from Paris','Amazing Thai food everywhere','Phang Nga Bay is world-class scenery','Best low-season deals (huge savings)'],
-cons:['Full monsoon season \u2014 daily rain','Some resorts close in September','West-coast sea can be rough','Koh Yao Noi is very small & quiet'],
-flightSearch:'https://www.google.com/travel/flights?q=flights+from+CDG+to+Krabi+September+2026',
-photos:[
-{src:'https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=600&h=400&fit=crop',cap:'Phang Nga Bay limestone'},
-{src:'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&h=400&fit=crop',cap:'Thai islands aerial'},
-{src:'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?w=600&h=400&fit=crop',cap:'Longtail boat sunset'},
-{src:'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&h=400&fit=crop',cap:'Golden sand beach'}
-],
-mapCenter:[8.10,98.70],mapZoom:9,
-pins:[
-{lat:8.13,lng:98.59,t:'beach',n:'Koh Yao Noi beaches',d:'Quiet, local, Phang Nga Bay views'},
-{lat:8.12,lng:98.60,t:'activity',n:'Phang Nga Bay kayaking',d:'Kayak through limestone karsts'},
-{lat:7.54,lng:99.04,t:'beach',n:'Koh Lanta Long Beach',d:'Km of golden sand, bohemian vibe'},
-{lat:7.47,lng:99.05,t:'activity',n:'Mu Ko Lanta National Park',d:'Jungle trails, beaches, lighthouse'},
-{lat:7.53,lng:99.04,t:'food',n:'Beautiful Restaurant, Lanta',d:'Thai-French, beachfront dinner'},
-{lat:8.13,lng:98.61,t:'food',n:'Koh Yao Noi local stalls',d:'Muslim fishing village food, grilled fish'},
-{lat:7.55,lng:99.03,t:'stay',n:'Koh Lanta bungalows',d:'Beachfront bamboo, \u20AC50-100/night'}
-],
-todo:[
-{n:'Phang Nga Bay day trip from Koh Yao Noi',d:'Kayak through sea caves and limestone islands. James Bond Island nearby.'},
-{n:'Koh Yao Noi cycling',d:'Flat island, rent bikes and explore rice paddies and fishing villages.'},
-{n:'Koh Lanta Old Town',d:'Charming stilted-house village, Chinese-Thai culture, artisan shops.'},
-{n:'Mu Ko Lanta National Park',d:'Hike to the lighthouse, swim at deserted beaches.'},
-{n:'Four Islands snorkeling trip',d:'From Koh Lanta: Koh Ngai, Koh Mook\u2019s Emerald Cave, Koh Kradan.'},
-{n:'Thai cooking class',d:'Learn pad thai and green curry. Available on both islands.'},
-{n:'Sunset at Relax Bay (Lanta)',d:'Quiet southern beach with dramatic red sunsets.'}
-],
-eat:[
-{n:'Beautiful Restaurant (Lanta)',d:'French-Thai fusion right on the beach. Perfect date night.'},
-{n:'Drunken Sailors (Lanta)',d:'Craft cocktails, tapas, and live music. Fun evening spot.'},
-{n:'Koh Yao Noi local stalls',d:'Roti canai, grilled fish, and Thai curries at village prices.'},
-{n:'Time for Lime (Lanta)',d:'Cooking school + restaurant. Learn to cook your dinner.'}
-]},
-
-{id:'cambodia',name:'Koh Rong Samloem',flag:'\u{1F1F0}\u{1F1ED}',region:'other',regionLabel:'Other Asia',
-vibe:'The last unspoiled island in Southeast Asia that\u2019s still accessible. Bioluminescent plankton, zero cars, tiny beach bungalow communities, and jungle trails. Koh Rong Samloem (the smaller, quieter island \u2014 not Koh Rong) is a Robinson Crusoe dream. September is wet season but stunning.',
-crowd:'quiet',vibeTag:'Pristine & raw',flightTime:'13-17h',
-flights:{low:750,high:1050,airlines:'Vietnam Airlines, Qatar, China Southern via Phnom Penh',stops:'1-2 stops + boat to island'},
-airbnb:{low:35,mid:55,high:80},daily:{food:15,transport:8,activities:12},
-weather:{temp:'26-30\u00B0C',rain:'Wet season \u2014 daily rain bursts, then sun',sea:'Warm but occasionally rough for boat transfers',risk:'Rainy season. Boats may be canceled in storms. Build in flexibility.',score:4},
-transport:'Fly to Sihanoukville (via Phnom Penh), then speed boat to the island (45min, ~\u20AC12). On island: walking only (no roads). Some water taxis between beaches.',
-romantic:'Swim in bioluminescent plankton at Saracen Bay at midnight \u2014 every stroke lights up electric blue. Pure magic.',
-pros:['Cheapest overall destination','Bioluminescent plankton is magical','Truly off-the-grid, Robinson Crusoe feel','Almost zero tourists'],
-cons:['Rainy season \u2014 boats can be canceled','Very basic infrastructure (no ATMs)','Limited food options','Getting there is a trek (3+ transfers)'],
-flightSearch:'https://www.google.com/travel/flights?q=flights+from+CDG+to+Sihanoukville+September+2026',
-photos:[
-{src:'https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=600&h=400&fit=crop',cap:'Pristine island beach'},
-{src:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=400&fit=crop',cap:'Tropical sunset'},
-{src:'https://images.unsplash.com/photo-1468413253725-0d5181091126?w=600&h=400&fit=crop',cap:'Robinson Crusoe vibes'},
-{src:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop',cap:'Crystal clear snorkeling'}
-],
-mapCenter:[10.60,103.33],mapZoom:12,
-pins:[
-{lat:10.61,lng:103.33,t:'beach',n:'Saracen Bay',d:'Main beach, powdery white sand, bioluminescence'},
-{lat:10.63,lng:103.32,t:'beach',n:'Sunset Beach',d:'Quiet western beach, stunning sunsets'},
-{lat:10.59,lng:103.32,t:'beach',n:'Lazy Beach',d:'Secluded southern cove'},
-{lat:10.62,lng:103.33,t:'activity',n:'Jungle trek to lighthouse',d:'2h hike through dense jungle'},
-{lat:10.61,lng:103.34,t:'food',n:'The One Resort restaurant',d:'Best food on the island'},
-{lat:10.60,lng:103.32,t:'stay',n:'Lazy Beach bungalows',d:'Off-grid bamboo, \u20AC35-70/night'}
-],
-todo:[
-{n:'Bioluminescent plankton swim',d:'Wade into Saracen Bay at night. The water glows electric blue.'},
-{n:'Lazy Beach day',d:'Boat-access only cove on the south side. Pure isolation.'},
-{n:'Jungle trek to lighthouse',d:'2-hour hike through dense forest to a viewpoint.'},
-{n:'Snorkeling off Saracen Bay',d:'Decent reef right offshore with tropical fish.'},
-{n:'Sunset Beach evening',d:'Walk across the island to catch sunset from the other side.'},
-{n:'Kayak around the headland',d:'Paddle between beaches and discover hidden coves.'}
-],
-eat:[
-{n:'The One Resort',d:'Best kitchen on the island. Fresh fish BBQ, Khmer curries.'},
-{n:'Saracen Bay beachfront shacks',d:'Simple grilled fish, cold beer, feet in the sand.'},
-{n:'Lazy Beach restaurant',d:'Set menu, whatever\u2019s fresh. Off-grid dining experience.'}
 ]},
 
 {id:'madeira',name:'Madeira',flag:'\u{1F1F5}\u{1F1F9}',region:'atlantic',regionLabel:'Atlantic Islands',
@@ -1088,84 +872,106 @@ eat:[
   wrap.innerHTML=html;
 })();
 
-// ===================== QUIZ =====================
+// ===================== MATCHMAKER SLIDERS =====================
 (function(){
-  var answers={};
-  document.querySelectorAll('.quiz-opt').forEach(function(opt){
-    opt.addEventListener('click',function(){
-      var q=this.parentElement.getAttribute('data-q');
-      this.parentElement.querySelectorAll('.quiz-opt').forEach(function(o){o.classList.remove('selected')});
-      this.classList.add('selected');
-      answers[q]=this.getAttribute('data-v');
-      if(answers.budget&&answers.activity&&answers.crowd)showResult();
-    });
-  });
-  function showResult(){
-    var scores={};
-    D.forEach(function(d){scores[d.id]=0});
-    // Budget scoring (max 3 pts)
-    D.forEach(function(d){
-      var acc=d.airbnb.mid*14;var fl=((d.flights.low+d.flights.high)/2)*2;var dai=(d.daily.food+d.daily.transport+d.daily.activities)*14*2;var total=acc+fl+dai;
-      if(answers.budget==='smart'){if(total<3500)scores[d.id]+=3;else if(total<4200)scores[d.id]+=2;else scores[d.id]+=1}
-      else if(answers.budget==='balanced'){if(total>=3000&&total<=4500)scores[d.id]+=3;else scores[d.id]+=1}
-      else{scores[d.id]+=2}// splurge: all fine
-    });
-    // Activity scoring (max 4 pts — most important)
-    var adventureDests=['flores','siargao','lombok','elnido','azores'];
-    var beachDests=['siquijor','nusapenida','cambodia','thailand','vietnam','mauritius','madeira','greece'];
-    var mixDests=['elnido','lombok','nusapenida','flores','madeira','mauritius','greece'];
-    D.forEach(function(d){
-      if(answers.activity==='adventure'&&adventureDests.indexOf(d.id)>=0)scores[d.id]+=4;
-      else if(answers.activity==='beach'&&beachDests.indexOf(d.id)>=0)scores[d.id]+=4;
-      else if(answers.activity==='mix'&&mixDests.indexOf(d.id)>=0)scores[d.id]+=4;
-      else if(answers.activity==='mix')scores[d.id]+=2;
-      else scores[d.id]+=1;
-    });
-    // Crowd scoring (max 4 pts — strong weight to match preference)
-    D.forEach(function(d){
-      if(answers.crowd==='secluded'&&d.crowd==='quiet')scores[d.id]+=4;
-      else if(answers.crowd==='secluded'&&d.crowd==='balanced')scores[d.id]+=1;
-      else if(answers.crowd==='some'&&d.crowd==='balanced')scores[d.id]+=4;
-      else if(answers.crowd==='some'&&d.crowd==='quiet')scores[d.id]+=1;
-      else if(answers.crowd==='fine'&&d.crowd==='balanced')scores[d.id]+=3;
-      else if(answers.crowd==='fine'&&d.crowd==='quiet')scores[d.id]+=2;
-      else scores[d.id]+=1;
-    });
-    // Weather bonus for dry season (max 2 pts)
-    var drySeason=['lombok','flores','nusapenida','madeira','mauritius','greece'];
-    drySeason.forEach(function(id){scores[id]+=2});
+  // Flight hours from Paris CDG (approximate)
+  var flightHours={siquijor:20,lombok:14,flores:16,nusapenida:15,madeira:4,azores:4.5,mauritius:11,greece:3.5};
+  // Vibe score: 0=pure beach, 100=pure adventure/explore
+  var vibeScore={siquijor:10,lombok:55,flores:80,nusapenida:30,madeira:60,azores:90,mauritius:25,greece:40};
 
-    var best=null,bestScore=0;
-    Object.keys(scores).forEach(function(id){if(scores[id]>bestScore){bestScore=scores[id];best=id}});
-    var dest=D.find(function(d){return d.id===best});
-    var res=document.getElementById('quiz-result');
-    document.getElementById('quiz-match').textContent=dest.flag+' '+dest.name;
-    document.getElementById('quiz-why').textContent=dest.vibe;
-    res.classList.add('show');
-    // Wire up the button to navigate to this specific destination
-    document.getElementById('quiz-go-btn').onclick=function(){
-      // Switch to the right region tab
-      document.querySelectorAll('.region-tab').forEach(function(t){t.classList.remove('active')});
-      document.querySelectorAll('.region-content').forEach(function(c){c.classList.remove('active')});
-      var tab=document.querySelector('.region-tab[data-region="'+dest.region+'"]');
-      if(tab)tab.classList.add('active');
-      var regionEl=document.getElementById('region-'+dest.region);
-      if(regionEl)regionEl.classList.add('active');
-      // Open the destination card
-      var card=document.querySelector('.dest-card[data-dest="'+dest.id+'"]');
-      if(card){
-        if(!card.classList.contains('open')){
-          card.querySelector('.dest-header').click();
-        }
-        setTimeout(function(){card.scrollIntoView({behavior:'smooth',block:'start'})},100);
+  function getBudgetLabel(v){if(v<33)return'Budget-friendly';if(v<67)return'Balanced';return'Luxury welcome'}
+  function getVibeLabel(v){if(v<33)return'Beach & chill';if(v<67)return'Mix';return'Adventure'}
+  function getDistLabel(v){if(v<33)return'Close please';if(v<67)return'Either';return'Far is fine'}
+
+  function computeAndRender(){
+    var bv=parseInt(document.getElementById('mm-budget').value);
+    var vv=parseInt(document.getElementById('mm-vibe').value);
+    var dv=parseInt(document.getElementById('mm-dist').value);
+    document.getElementById('mm-budget-lbl').textContent=getBudgetLabel(bv);
+    document.getElementById('mm-vibe-lbl').textContent=getVibeLabel(vv);
+    document.getElementById('mm-dist-lbl').textContent=getDistLabel(dv);
+
+    // Costs
+    var costs={};
+    D.forEach(function(d){
+      var acc=d.airbnb.mid*14;
+      var fl=((d.flights.low+d.flights.high)/2)*2;
+      var dai=(d.daily.food+d.daily.transport+d.daily.activities)*14*2;
+      costs[d.id]=acc+fl+dai;
+    });
+    var minCost=Math.min.apply(null,D.map(function(d){return costs[d.id]}));
+    var maxCost=Math.max.apply(null,D.map(function(d){return costs[d.id]}));
+
+    var scores={};
+    D.forEach(function(d){
+      // Budget component: budget slider 0=cheap preferred, 100=expensive fine
+      // Normalize cost 0-1 (0=cheapest, 1=most expensive)
+      var normCost=(costs[d.id]-minCost)/(maxCost-minCost||1);
+      // Budget pref: slider 0=want cheap(high score for low cost), 100=ok with expensive
+      var budgetScore;
+      if(bv<50){
+        // prefer cheap: reward low normCost
+        budgetScore=1-normCost;
+      } else {
+        // indifferent to expensive: slight penalty for very expensive, but small
+        budgetScore=0.5+(0.5*(1-normCost));
       }
-    };
+
+      // Vibe component: match slider to destination vibe
+      var destVibe=(vibeScore[d.id]||50)/100;// 0=beach, 1=adventure
+      var sliderVibe=vv/100;
+      var vibeDiff=Math.abs(destVibe-sliderVibe);
+      var vibeScoreVal=1-vibeDiff;
+
+      // Distance component: match slider to flight hours
+      var maxH=20,minH=3.5;
+      var normH=(flightHours[d.id]-minH)/(maxH-minH||1);// 0=short, 1=long
+      var sliderDist=dv/100;// 0=want close, 1=ok far
+      var distDiff=Math.abs(normH-sliderDist);
+      var distScoreVal=1-distDiff;
+
+      scores[d.id]=(budgetScore*0.35+vibeScoreVal*0.40+distScoreVal*0.25);
+    });
+
+    var sorted=D.slice().sort(function(a,b){return scores[b.id]-scores[a.id]});
+    var maxScore=scores[sorted[0].id];
+
+    var html='';
+    sorted.forEach(function(d,i){
+      var pct=Math.round((scores[d.id]/maxScore)*100);
+      var isTop=i===0;
+      var flH=flightHours[d.id];
+      var cost=costs[d.id];
+      html+='<div class="mm-pick-card'+(isTop?' top-pick':'')+'" onclick="(function(){'+
+        'document.querySelectorAll(\'.region-tab\').forEach(function(t){t.classList.remove(\'active\')});'+
+        'document.querySelectorAll(\'.region-content\').forEach(function(c){c.classList.remove(\'active\')});'+
+        'var tab=document.querySelector(\'.region-tab[data-region=\\"'+d.region+'\\"]\');if(tab)tab.classList.add(\'active\');'+
+        'var re=document.getElementById(\'region-'+d.region+'\');if(re)re.classList.add(\'active\');'+
+        'var card=document.querySelector(\'.dest-card[data-dest=\\"'+d.id+'\\"]\');'+
+        'if(card){if(!card.classList.contains(\'open\'))card.querySelector(\'.dest-header\').click();'+
+        'setTimeout(function(){card.scrollIntoView({behavior:\'smooth\',block:\'start\'})},200);}'+
+        'document.getElementById(\'destinations\').scrollIntoView({behavior:\'smooth\'});'+
+        '})()">';
+      html+='<div class="mm-rank">'+(isTop?'🥇':i===1?'🥈':i===2?'🥉':'&#8199;'+(i+1))+'</div>';
+      html+='<div class="mm-pick-info">';
+      html+='<div class="mm-pick-name">'+d.flag+' '+d.name+'</div>';
+      html+='<div class="mm-pick-stats"><span>✈️ '+flH+'h from Paris</span><span>💶 ~€'+Math.round(cost/100)*100+' total/2ppl</span><span>☀️ '+d.weather.score+'/10 weather</span></div>';
+      html+='</div>';
+      html+='<div class="mm-score-bar"><div class="mm-score-fill" style="width:'+pct+'%"></div></div>';
+      html+='</div>';
+    });
+    document.getElementById('mm-result').innerHTML=html;
   }
+
+  ['mm-budget','mm-vibe','mm-dist'].forEach(function(id){
+    document.getElementById(id).addEventListener('input',computeAndRender);
+  });
+  computeAndRender();// render on load with defaults
 })();
 
 // ===================== RENDER DESTINATIONS =====================
 (function(){
-  var regions=[{id:'philippines',label:'\u{1F1F5}\u{1F1ED} Philippines'},{id:'indonesia',label:'\u{1F1EE}\u{1F1E9} Indonesia'},{id:'other',label:'\u{1F30F} Other Asia'},{id:'atlantic',label:'\u{1F30D} Europe & Islands'}];
+  var regions=[{id:'indonesia',label:'\u{1F1EE}\u{1F1E9} Asia & Pacific'},{id:'atlantic',label:'\u{1F30D} Europe & Islands'}];
   var tabsWrap=document.getElementById('region-tabs');
   var container=document.getElementById('regions-container');
 
